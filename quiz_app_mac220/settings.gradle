@@ -1,0 +1,2 @@
+rootProject.name='quiz_app_mac220'
+include ':app'

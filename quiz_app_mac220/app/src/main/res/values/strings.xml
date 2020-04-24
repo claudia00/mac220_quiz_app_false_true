@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">quiz_app_mac220</string>
+    <string name = "game_trivia">Game Trivia</string>
+    <string name="start">Start</string>
+    <string name="q">The First Video Game was Pac-man</string>
+    <string name="q2">The founder of Nintendo is named Mr. Yamauchi</string>
+    <string name="q3">The first final fantasy game was made in 1987</string>
+    <string name="q4">The  Super Nintendo is the first nintendo console</string>
+    <string name="q5">Tetris is the first space game in gaming history</string>
+    <string name="trueBtn">true</string>
+    <string name="falseBtn">false</string>
+    <string name="game_over">GAME OVER</string>
+    <string name="toast_false1">Not Quite</string>
+    <string name="toast_true1">Huh? You got it right! :o</string>
+    <string name="toast_false2">Hmm, Nope!</string>
+    <string name="toast_true2">Yep, your right! ^-^</string>
+    <string name="toast_false3">Aww D: wrong </string>
+    <string name="toast_true3">Woah! someone is smart!</string>
+</resources>
