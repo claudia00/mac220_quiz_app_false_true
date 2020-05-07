@@ -52,20 +52,20 @@ class MainActivity : AppCompatActivity() {
         triviaTextV = questions_textView
 
         tBtn.setOnClickListener {
-            val ans = checkAns(true)
+            val ans = checkAnswer(true)
             Toast.makeText(this, ans, Toast.LENGTH_SHORT).show()
             tBtn.isEnabled = false
             fBtn.isEnabled = false
             quizArr += currentIndex
-            scorePts(true)
+            updateScore(true)
         }
         fBtn.setOnClickListener {
-            val ans2 = checkAns(false)
+            val ans2 = checkAnswer(false)
             Toast.makeText(this, ans2, Toast.LENGTH_SHORT).show()
             tBtn.isEnabled = false
             fBtn.isEnabled = false
             quizArr+=currentIndex
-            scorePts(false)
+            updateScore(false)
             }
         nBtn.setOnClickListener {
             Toast.makeText(this, "Here's another question", Toast.LENGTH_SHORT).show()
@@ -100,25 +100,29 @@ class MainActivity : AppCompatActivity() {
         savedInstanceState.putIntArray(Key, quizArr)
     }
 
-     private fun scorePts(userInput: Boolean){
-         val ansIsRight = quizList[currentIndex].answer
-         val final_score = (right.toFloat()/quizList.size)*100
-         if(userInput == ansIsRight){
-         right++
-         }else{
-         wrong++
+     private fun updateScore(userInput: Boolean) {
+         val correctAnswer = quizList[currentIndex].answer
+         //val final_score = (right.toFloat()/quizList.size)*100
+         if (userInput == correctAnswer) {
+             right++
+         } else {
+             wrong++
          }
+         onScoreUpdated()
+     }
+    private fun onScoreUpdated(){
          if(right+wrong == quizList.size){
-        val result = Toast.makeText(this, "You were right: "+ right.toString()+" You were wrong: "+ wrong.toString()+ " Your final percentage is: ${final_score} %", Toast.LENGTH_LONG).show()
-        return result
+        //val result =
+        return Toast.makeText(this, "You were right:  $right You were wrong:  $wrong Your final percentage is: ${calculateFinalScore()} %", Toast.LENGTH_LONG).show()
          }
-        }
+    }
+    private fun calculateFinalScore(): Float = (right.toFloat()/quizList.size)*100
     private fun updateQuestion(){
         val questionId = quizList[currentIndex].textResId
         questions_textView.setText(questionId)
         oneClick()
     }
-    private fun checkAns(userInput: Boolean):Int{
+    private fun checkAnswer(userInput: Boolean):Int{
         val correctAns = quizList[currentIndex].answer
         val messageId = if(userInput == correctAns){
             R.string.toast_true1
